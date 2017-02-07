@@ -1,0 +1,91 @@
+{>"layouts/master.dust"/}
+
+{<title}操作日志{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="list-cont">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            {!<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div>!}
+                        </div>
+                        <div class="col-sm-7">
+                            <ul class="pagination" id="list_paginate">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+<script type="text/x-template" id="template-item-list">
+    <div>
+        <div class="box">
+            <div class="box-body">
+                <table class="table table-striped" style="">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <th>用户ID</th>
+                            <th>邮箱</th>
+                            <th>URL</th>
+                            <th>URL参数</th>
+                            <th>接口</th>
+                            <th>接口参数</th>
+                            <th>状态</th>
+                            <th>时间</th>
+                        </tr>
+                        <tr v-for="(item, idx) in listData">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.userid }}</td>
+                            <td>{{ item.email }}</td>
+                            <td><div style="min-width:100px; word-break: break-all;">{{ item.url }}</div></td>
+                            <td><div class="twoline" data-toggle="tooltip" data-placement="bottom" :title="item.url_params" style="min-width:150px; max-width: 250px; word-break: break-all;">{{ item.url_params }}</div></td>
+                            <td><div style="min-width:100px; word-break: break-all;">{{ item.interface }}</div></td>
+                            <td><div class="twoline" data-toggle="tooltip" data-placement="bottom" :title="item.interface_params" style="min-width:150px; max-width: 250px; word-break: break-all;">{{ item.interface_params }}</div></td>
+                            <td>{{ item.status }}</td>
+                            <td><div style="width:150px; word-break: break-all;">{{ item.ctime }}</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+<script src="/js/lib/icheck.min.js"></script>
+<script src="/js/lib/bootstrap-paginator.min.js"></script>
+
+<script src="/js/admin/operatelog.js"></script>
+<script>
+
+</script>
+{/scriptBottom}

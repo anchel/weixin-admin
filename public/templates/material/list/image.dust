@@ -1,0 +1,91 @@
+{>"layouts/master.dust"/}
+
+{<title}图片列表{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/js/lib/blueimp/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                图片列表
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="box">
+                    <div class="box-header">
+                        <button type="button" class="btn btn-block btn-success pull-right uploadfile" style="width: 120px;">+添加图片</button>
+                    </div>
+                    <div class="box-body">
+                        <div class="" id="listcont">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                {!<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div>!}
+                            </div>
+                            <div class="col-sm-7">
+                                <ul class="pagination" id="list_paginate">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+
+<script type="text/tpl" id="tpl-list">
+    <% for(var i=0,dd,len=item.length; dd=item[i]; i++ ){ %>
+    <div class="material-item" style="">
+        <div class="item-pic-cont" data-mid="<%=dd.media_id%>">
+            <img src="<%=dd.image_url%>" data-mid="<%=dd.media_id%>" class="item-pic" onerror="picerr(this,1)" />
+            <div class="item-mask" title="<%=dd.name%>"><%=dd.name%></div>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default preview" data-for="<%=dd.media_id%>" title="预览"><i class="fa fa-image"></i></button>
+          <button type="button" class="btn btn-default downmaterial" data-for="<%=dd.media_id%>" title="同步图片到本地"><i class="fa fa-refresh"></i></button>
+          <button type="button" class="btn btn-default delmaterial" data-for="<%=dd.media_id%>" title="删除"><i class="fa fa-trash-o"></i></button>
+        </div>
+        <div class="sel">
+            <div class="sel-icon"><i class="fa fa-check"></i></div>
+        </div>
+    </div>
+    <% } %>
+</script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+    <script src="/js/lib/icheck.min.js"></script>
+    <script src="/js/lib/bootstrap-paginator.min.js"></script>
+    <script src="/js/lib/plupload.full.min.js"></script>
+    {!<script src="/js/lib/blueimp/js/blueimp-gallery.min.js"></script>!}
+    {!<script src="/js/lib/dust-full.min.js"></script>!}
+    {!<script src="/js/lib/jquery.dataTables.min.js"></script>!}
+    {!<script src="/js/lib/dataTables.bootstrap.min.js"></script>!}
+    <script src="/js/material/list/image.js"></script>
+    <script>
+
+    </script>
+{/scriptBottom}

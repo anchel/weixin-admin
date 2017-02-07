@@ -1,0 +1,101 @@
+{>"layouts/master.dust"/}
+
+{<title}发送消息{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="main-cont">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+    <script type="text/x-template" id="template-main">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">发送消息</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="touser" class="col-sm-2 control-label">openid</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="sendinfo.touser" id="touser" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="template_id" class="col-sm-2 control-label">模板ID</label>
+                        <div class="col-sm-10">
+                            <select v-model="sendinfo.template_id" class="form-control">
+                                <option value="">请选择</option>
+                                <option v-for="(ti, idx) in template_list" :value="ti.template_id">{{ ti.title }}</option>
+                            </select>
+                            <div>
+                                <div>模板内容：</div>
+                                <div v-html="selTemplateInfo.content"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="url" class="col-sm-2 control-label">URL</label>
+                        <div class="col-sm-10">
+                            <input type="url" class="form-control" v-model="sendinfo.url" id="url" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="data" class="col-sm-2 control-label">数据</label>
+                        <div class="col-sm-10">
+                            <div class="form-horizontal">
+                                <div class="form-group" v-for="(vi, idx) in selTemplateInfo.valArr">
+                                    <label :for="vi.k" class="col-sm-3 control-label">{{ vi.k }}</label>
+                                    <div class="col-sm-9">
+                                        <input type="url" class="form-control" v-model="vi.v" :id="vi.k" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="button" @click="onSend" class="btn btn-info pull-right">发送</button>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+    </script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+<script src="/js/lib/icheck.min.js"></script>
+<script src="/js/lib/bootstrap-paginator.min.js"></script>
+
+<script src="/js/template/sendmsg.js"></script>
+<script>
+
+</script>
+{/scriptBottom}

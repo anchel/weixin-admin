@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/style/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/style/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/style/css/ionicons.min.css">
+    <!-- jvectormap -->
+    {!<link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">!}
+    <!-- Theme style -->
+
+    {!<link rel="stylesheet" href="style/css/fonts-googleapis.css">!}
+    <link rel="stylesheet" href="/style/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/style/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/js/lib/blueimp/css/blueimp-gallery.min.css">
+
+    <title>{+title}微信管理后台{/title}</title>
+    <style>
+        .none {
+            display: none;
+        }
+        .twoline {
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+            -webkit-line-clamp: 3; /** 显示的行数 **/
+            overflow: hidden;  /** 隐藏超出的内容 **/
+        }
+    </style>
+    {+styleTop/}
+    <script>
+        try{
+            document.domain = 'teshehui.com';
+        }catch(e){
+
+        }
+        window.g_base = {?g_base}{g_base|js|s}{:else}{};{/g_base}
+    </script>
+
+    {@ne key=settings.env value="production"}
+        <script>
+
+        </script>
+    {:else}
+        <script>
+
+        </script>
+    {/ne}
+    {+scriptTop/}
+</head>
+<body class="fixed sidebar-mini skin-green">
+
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>wechat</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>{g_base.sitename}</b></span>
+            </a>
+
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/style/img/avatar-dog.jpg" class="user-image userinfo-header" alt="User Image">
+                                <span class="hidden-xs userinfo-name" ></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="/style/img/avatar-dog.jpg" class="img-circle userinfo-header" alt="User Image">
+
+                                    <p class="userinfo-email">
+
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="javascript:;" class="btn btn-default btn-flat logout">退出</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li><a href="/menu"><span>自定义菜单</span></a></li>
+                    <li><a href="/autoreply"><span>自动回复</span></a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>素材管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/material/list/news"><i class="fa fa-newspaper-o"></i>图文列表</a></li>
+                            <li><a href="/material/list/image"><i class="fa fa-picture-o"></i>图片列表</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>渠道管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/qrcode/list"><i class="fa fa-newspaper-o"></i>渠道二维码</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>模板消息</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/template/templatelist"><i class="fa fa-newspaper-o"></i>模板列表</a></li>
+                            <li><a href="/template/sendmsg"><i class="fa fa-newspaper-o"></i>发送消息</a></li>
+                            <li><a href="/template/sendlist"><i class="fa fa-newspaper-o"></i>消息列表</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>用户管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/subscribeuser/list"><i class="fa fa-newspaper-o"></i>用户列表</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>系统管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/operatelog"><i class="fa fa-newspaper-o"></i>操作日志</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        {+bodyContent/}
+    </div>
+    <!-- ./wrapper -->
+
+    {+bodyGlobalContent/}
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+
+    <!-- jQuery 2.2.3 -->
+    <script src="/js/lib/jquery-2.2.3.min.js"></script>
+    <script src="/js/lib/vue.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="/js/lib/bootstrap.min.js"></script>
+    <script src="/js/lib/bootstrap-notify.min.js"></script>
+    <script src="/js/lib/bootstrap-confirm.js"></script>
+    <script src="/js/lib/bootstrap-paginator.min.js"></script>
+    <script src="/js/lib/blueimp/js/blueimp-gallery.min.js"></script>
+    <script src="/js/lib/jquery.slimscroll.min.js"></script>
+    <script src="/js/lib/app.min.js"></script>
+    <script src="/js/common/base.js"></script>
+    {!<script src="/js/common/msg_add.js"></script>!}
+    <script src="/js/common/msg_add_plus.js"></script>
+    <script>
+        $(function() {
+            var pn = location.pathname + location.search;
+            var mlis = $('.sidebar-menu').find('>li');
+            mlis.removeClass('active');
+            mlis.find('.treeview-menu li').removeClass('active');
+            mlis.each(function(i, li){
+                if($(li).hasClass('treeview')){
+                    var sublis = $(li).find('.treeview-menu li');
+                    sublis.each(function(j, jli) {
+                        var href = $(jli).find('>a').attr('href');
+                        if(pn.indexOf(href) == 0){
+                            $(jli).addClass('active');
+                            $(jli).parents('.treeview').addClass('active');
+                            return false;
+                        }
+                    });
+                } else {
+                    var href = $(li).find('>a').attr('href');
+                    if(pn.indexOf(href) == 0){
+                        $(li).addClass('active');
+                        return false;
+                    }
+                }
+
+            });
+        });
+    </script>
+    {+scriptBottom/}
+
+    {@eq key=settings.env value="production"}
+
+    {/eq}
+
+</body>
+</html>

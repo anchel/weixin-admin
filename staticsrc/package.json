@@ -1,0 +1,27 @@
+{
+  "name": "staticsrc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-css-url-prefixer": "^0.1.1",
+    "gulp-less": "^3.1.0",
+    "gulp-rev-all": "^0.8.24",
+    "gulp-seajs-concat": "^1.0.5",
+    "gulp-seajs-revmap": "0.0.3",
+    "gulp-seajs-transport": "^0.4.0",
+    "gulp-ssh": "^0.6.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "node-config": "0.0.2"
+  }
+}

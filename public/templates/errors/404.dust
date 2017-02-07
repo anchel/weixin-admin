@@ -1,0 +1,20 @@
+{>"layouts/master.dust"/}
+
+{<title}特奢汇商城{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/static/css/index.css?t=20160717">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<bodyContent}
+
+    <h1>404 not found</h1>
+
+{/bodyContent}
+
+{<scriptBottom}
+
+{/scriptBottom}

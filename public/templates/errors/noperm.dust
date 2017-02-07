@@ -1,0 +1,36 @@
+{>"layouts/master.dust"/}
+
+{<title}微信管理系统{/title}
+
+{<styleTop}
+
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                请申请访问权限 <a href="{applyurl}" target="_blank">去申请</a>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<scriptBottom}
+    <script>
+
+    </script>
+{/scriptBottom}

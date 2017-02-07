@@ -1,0 +1,44 @@
+{
+  "name": "weixin-admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.teshehui.com:h5/weixin-admin.git"
+  },
+  "keywords": [
+    "weixin",
+    "admin"
+  ],
+  "author": "Teshehui FE Team",
+  "license": "ISC",
+  "dependencies": {
+    "adaro": "^1.0.4",
+    "async": "^2.0.0-rc.6",
+    "body-parser": "^1.15.1",
+    "config": "^1.21.0",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-enrouten": "^1.3.0",
+    "express-session": "^1.13.0",
+    "ip": "^1.1.3",
+    "lodash": "^4.15.0",
+    "log4js": "^0.6.36",
+    "multer": "^1.2.0",
+    "mysql": "^2.11.1",
+    "mysql2": "^1.1.0",
+    "node-ssh": "^3.0.1",
+    "qs": "^6.3.0",
+    "request": "^2.72.0",
+    "sequelize": "^4.0.0-2",
+    "thrift": "^0.9.3",
+    "wechat": "^2.0.3",
+    "wechat-api": "^1.28.1"
+  }
+}

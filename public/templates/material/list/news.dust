@@ -1,0 +1,96 @@
+{>"layouts/master.dust"/}
+
+{<title}图文列表{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                图文列表
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="box">
+                    <div class="box-header">
+                        <a target="_blank" href="https://mp.weixin.qq.com/">
+                            <button type="button" class="btn btn-block btn-success pull-right" style="width: 120px;">+添加图文</button>
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <div class="" id="listcont">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                {!<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div>!}
+                            </div>
+                            <div class="col-sm-7">
+                                <ul class="pagination" id="list_paginate">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+<script type="text/tpl" id="tpl-list">
+    <% for(var i=0,dd,len=item.length; dd=item[i]; i++ ){ %>
+    <div class="material-item">
+        <div style="border: 1px solid grey;">
+            <% for(var j=0,si,len=1; si=dd.content.news_item[j]; j=j+1000 ){ %>
+            <div class="" style="width: 250px; height: 100px; position: relative; overflow: hidden;">
+                <img src="<%=si.image_url%>" data-mid="<%=si.thumb_media_id%>" class="item-pic" onerror="picerr(this,1)" />
+                <span class="item-mask"><%=si.title%></span>
+            </div>
+            <% } %>
+            <% for(var j=1,si,len=dd.content.news_item.length; si=dd.content.news_item[j]; j++ ){ %>
+            <div style="width: 250px; height: 68px; position: relative; overflow: hidden;">
+                <div style="width:60px; height: 60px; position: relative; float: right;margin: 4px;overflow: hidden;">
+                    <img src="<%=si.image_url%>" data-mid="<%=si.thumb_media_id%>" class="item-pic" onerror="picerr(this,1)" />
+                </div>
+                <div style="padding-top: 10px; padding-left: 10px; width: 130px;"><%=si.title%></div>
+            </div>
+            <% } %>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default downmaterial" data-for="<%=dd.media_id%>" title="同步图片到本地"><i class="fa fa-refresh"></i></button>
+          <button type="button" class="btn btn-default delmaterial" data-for="<%=dd.media_id%>" title="删除该素材"><i class="fa fa-trash-o"></i></button>
+        </div>
+    </div>
+    <% } %>
+</script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+    <script src="/js/lib/icheck.min.js"></script>
+    <script src="/js/lib/bootstrap-paginator.min.js"></script>
+    <script src="/js/lib/plupload.full.min.js"></script>
+
+    <script src="/js/material/list/news.js"></script>
+    <script>
+
+    </script>
+{/scriptBottom}

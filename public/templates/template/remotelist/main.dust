@@ -1,0 +1,93 @@
+{>"layouts/master.dust"/}
+
+{<title}官方已选模板列表{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="display: none;">
+                        <button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> 设置行业</button>
+                        <button type="button" class="btn btn-success btn-sm add-item"><i class="glyphicon glyphicon-plus"></i> 添加</button>
+                    </div>
+
+                    <div class="list-cont">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            {!<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div>!}
+                        </div>
+                        <div class="col-sm-7">
+                            <ul class="pagination" id="list_paginate">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+<script type="text/x-template" id="template-item-list">
+    <div>
+        <div class="box">
+            <div class="box-body">
+                <table class="table table-striped" style="">
+                    <tbody>
+                        <tr>
+                            <th>模板ID</th>
+                            <th>名称</th>
+                            <th>行业1</th>
+                            <th>行业2</th>
+                            <th>内容</th>
+                            <th>示例</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr v-for="(item, idx) in listData">
+                            <td ><div style="min-width: 200px; max-width: 300px; word-break: break-all;">{{ item.template_id }}</div></td>
+                            <td style="width: 120px;">{{ item.title }}</td>
+                            <td style="width: 60px;">{{ item.primary_industry }}</td>
+                            <td style="width: 100px;">{{ item.deputy_industry }}</td>
+                            <td><div v-html="item.content"></div></td>
+                            <td><div v-html="item.example"></div></td>
+                            <td>
+                                {!<button @click="onRemoveItem(idx)">删除</button>!}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+<script src="/js/lib/icheck.min.js"></script>
+<script src="/js/lib/bootstrap-paginator.min.js"></script>
+
+<script src="/js/template/remotelist.js"></script>
+<script>
+
+</script>
+{/scriptBottom}

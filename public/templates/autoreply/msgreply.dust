@@ -1,0 +1,74 @@
+{>"layouts/master.dust"/}
+
+{<title}消息自动回复{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-10">
+                    <!-- Custom Tabs -->
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/autoreply" data-toggle="" aria-expanded="true">被添加自动回复</a></li>
+                            <li class="active"><a href="/autoreply?type=2" data-toggle="" aria-expanded="false">消息自动回复</a></li>
+                            <li class=""><a href="/autoreply?type=3" data-toggle="" aria-expanded="false">关键词自动回复</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tab_1">
+
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane active" id="tab_2">
+                                <div>
+                                    <div class="msg-cont">
+
+                                    </div>
+                                    <div class="" style="margin-top: 20px;">
+                                        <input class="" type="hidden" id="msg-id">
+                                        <button type="button" class="btn btn-success" id="save-data">保存数据</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_3">
+
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+    {>"ssi/ssi_material.dust"/}
+    {>"ssi/ssi_msg_add.dust"/}
+{/bodyGlobalContent}
+
+{<scriptBottom}
+    <script src="js/lib/icheck.min.js"></script>
+    <script src="js/lib/plupload.full.min.js"></script>
+    <script src="js/autoreply/msgreply.js"></script>
+    <script>
+
+    </script>
+{/scriptBottom}

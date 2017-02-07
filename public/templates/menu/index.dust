@@ -1,0 +1,126 @@
+{>"layouts/master.dust"/}
+
+{<title}自定义菜单{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="style/css/jstree.min.css">
+    <link rel="stylesheet" href="style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="box-body">
+                    <button type="button" id="btn-create-menuone" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-asterisk"></i> 新建一级菜单</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div id="tree-menu" style="min-height: 100px;"></div>
+                    <div class="box-body" style="margin-top: 100px">
+                        <button id="btn-menu-save" class="btn btn-success">保存菜单</button>
+                        <button id="btn-menu-release" class="btn btn-success">发布菜单</button>
+                        <button id="btn-menu-delete" class="btn btn-danger">删除菜单</button>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="box-body">
+                        <form class="form-horizontal" id="menu-info" style="background-color: white;">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-2 control-label">类型</label>
+                                    <div class="col-sm-10">
+                                        <label class="radio-inline" for="menutype1">
+                                            <input type="radio" name="menutype" id="menutype1" value="click"> 回复消息
+                                        </label>
+                                        <label class="radio-inline" for="menutype2">
+                                            <input type="radio" name="menutype" id="menutype2" value="view"> 跳转网页
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="cont-click none">
+                                    <div class="col-sm-offset-2">
+
+                                    </div>
+
+                                </div>
+                                <div class="cont-view none">
+                                    <div class="form-group">
+                                        <label for="url" class="col-sm-2 control-label">URL:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="url" id="url" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer" style="display: none;">
+                                <button type="button" id="btn-save-minfo" class="btn btn-success ">确定</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+    <!-- Modal -->
+    <div class="modal fade" id="modal-menuone" tabindex="-1" role="dialog" aria-labelledby="menuoneLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="menuoneLabel">创建一级菜单</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="menuone-name" class="col-sm-2 control-label">菜单名称</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="menuone-name" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-success ok">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {>"ssi/ssi_material.dust"/}
+    {>"ssi/ssi_msg_add.dust"/}
+{/bodyGlobalContent}
+
+{<scriptBottom}
+
+    <script src="/js/lib/jstree.min.js"></script>
+    <script src="/js/lib/icheck.min.js"></script>
+    <script src="/js/lib/plupload.full.min.js"></script>
+    <script src="/js/menu/index.js"></script>
+    <script>
+
+    </script>
+{/scriptBottom}

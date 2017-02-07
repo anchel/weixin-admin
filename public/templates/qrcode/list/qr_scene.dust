@@ -1,0 +1,152 @@
+{>"layouts/master.dust"/}
+
+{<title}临时二维码{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="/qrcode/list?action_name=qr_limit_scene">永久渠道</a></li>
+                            <li class="active"><a href="/qrcode/list?action_name=qr_scene">临时渠道</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane">
+
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane active">
+                                <div style="margin: 10px;">
+                                    <button type="button" class="btn btn-success btn-sm add-item"><i class="glyphicon glyphicon-plus"></i> 添加关注渠道</button>
+                                </div>
+
+                                <div class="list-cont">
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        {!<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div>!}
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <ul class="pagination" id="list_paginate">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane">
+
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+
+    <script type="text/x-template" id="template-item-list">
+    <div>
+        <div class="form-horizontal" v-show="showEdit">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">名称</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" v-model="editInfo.name">
+                    </div>
+                </div>
+                <div class="form-group" v-show="isTmpQrcode">
+                    <label for="expire_seconds" class="col-sm-2 control-label">过期时间</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="expire_seconds" v-model="editInfo.expire_seconds" placeholder="单位为秒">
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="button" class="btn btn-info pull-right" @click="onClose">取消</button>
+                <button type="button" class="btn btn-info pull-right" @click="onSaveItem" style="margin-right: 10px;">确定</button>
+            </div>
+            <!-- /.box-footer -->
+        </div>
+
+    <div class="box">
+        <div class="box-body">
+            <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th>scene_id</th>
+                <th>名称</th>
+                <th>二维码</th>
+                <th>url</th>
+                <th>过期时长</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="(item, idx) in listData">
+            <td>{{ item.scene_id }}</td>
+            <td><input v-if="item.edit" v-model="item.name" /><span v-else>{{ item.name }}</span></td>
+            <td>
+                <img style="height: 70px; width: 70px;" :src="item.img_url" :data-imgurl="item.img_url" class="img-preview" onerror="picerr(this,1)">
+            </td>
+            <td>{{ item.url }}</td>
+            <td>
+                <div v-if="item.action_name == 'QR_SCENE'">
+                    <span>{{ item.expire_seconds }}</span>
+                </div>
+                <span v-else>永不过期</span>
+            </td>
+            <td>
+                <span>{{ item.ctime }}</span>
+            </td>
+            <td>
+                <button v-if="item.edit" @click="confirmModify(idx)">确定</button>
+                <button v-else @click="modifyItem(idx)">修改</button>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+<script src="/js/lib/icheck.min.js"></script>
+<script src="/js/lib/bootstrap-paginator.min.js"></script>
+<script src="/js/lib/plupload.full.min.js"></script>
+
+<script>
+    var ACTION_NAME = 'QR_SCENE';
+</script>
+<script src="/js/qrcode/list/main.js"></script>
+<script>
+
+</script>
+{/scriptBottom}

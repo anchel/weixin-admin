@@ -1,0 +1,95 @@
+{>"layouts/master.dust"/}
+
+{<title}用户列表{/title}
+
+{<styleTop}
+    <link rel="stylesheet" href="/style/css/icheck/skins/square/green.css">
+    <link rel="stylesheet" href="/style/css/material/material.css">
+    <style>
+
+    </style>
+{/styleTop}
+
+{<scriptTop}
+
+{/scriptTop}
+
+{<bodyContent}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="list-cont">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            {!<div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 11 to 20 of 57 entries</div>!}
+                        </div>
+                        <div class="col-sm-7">
+                            <ul class="pagination" id="list_paginate">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{/bodyContent}
+
+{<bodyGlobalContent}
+<script type="text/x-template" id="template-item-list">
+    <div>
+        <div class="box">
+            <div class="box-body">
+                <table class="table table-striped" style="">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <th>关注</th>
+                            <th>OPENID</th>
+                            <th>UNIONID</th>
+                            <th>昵称</th>
+                            <th>性别</th>
+                            <th>头像</th>
+                            <th>渠道ID</th>
+                            <th>更新时间</th>
+                            <th>创建时间</th>
+                        </tr>
+                        <tr v-for="(item, idx) in listData">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item._subscribe }}</td>
+                            <td>{{ item.openid }}</td>
+                            <td>{{ item.unionid }}</td>
+                            <td>{{ item.nickname }}</td>
+                            <td>{{ item._sex }}</td>
+                            <td>
+                                <img style="height: 70px; width: 70px;" :src="item.headimgurl" :data-imgurl="item.headimgurl" class="img-preview" onerror="picerr(this,1)">
+                            </td>
+                            <td>{{ item.subscribe_scene_id }}</td>
+                            <td><div style="width:150px; word-break: break-all;">{{ item.mtime }}</div></td>
+                            <td><div style="width:150px; word-break: break-all;">{{ item.ctime }}</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+{/bodyGlobalContent}
+
+{<scriptBottom}
+<script src="/js/lib/icheck.min.js"></script>
+<script src="/js/lib/bootstrap-paginator.min.js"></script>
+
+<script src="/js/subscribeuser/list.js"></script>
+<script>
+
+</script>
+{/scriptBottom}

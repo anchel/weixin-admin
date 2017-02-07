@@ -1,0 +1,204 @@
+<script type="text/x-template" id="template-msg-app">
+    <div>
+        <div class="msg-list-cont">
+            <h4>消息列表（{{ msg_data.reply_msg_list.length }}条消息）</h4>
+            <div v-for="(msgitem, idx) in msg_data.reply_msg_list">
+                <template v-if="(msgitem.type === 'text')">
+                    <msg-item-text :data="msgitem" :idx="idx" :_msg_data="msg_data" @removeMsg="onRemoveMsg" @updateMsg="onUpdateMsg"></msg-item-text>
+                </template>
+                <template v-if="(msgitem.type === 'image')">
+                    <msg-item-image :data="msgitem" :idx="idx" :_msg_data="msg_data" @removeMsg="onRemoveMsg" @updateMsg="onUpdateMsg"></msg-item-image>
+                </template>
+                <template v-if="(msgitem.type === 'mpnews')">
+                    <msg-item-news :data="msgitem" :idx="idx" :_msg_data="msg_data" @removeMsg="onRemoveMsg" @updateMsg="onUpdateMsg"></msg-item-news>
+                </template>
+                <template v-if="(msgitem.type === 'news')">
+                    <msg-item-news-outer :data="msgitem" :idx="idx" :_msg_data="msg_data" @removeMsg="onRemoveMsg" @updateNewsOuterMsg="onUpdateNewsOuterMsg"></msg-item-news-outer>
+                </template>
+            </div>
+        </div>
+
+        <div class="msg-edit-cont" style="margin-top: 15px; border-top: 1px solid black;">
+            <ul class="nav nav-tabs">
+                <li v-for="(ti,idx) in reply_type_list" :class="{active: ti.active}" :reply-type="ti.type"><a href="javascript:;" @click="setCurReplyType(idx)">{{ ti.name }}</a></li>
+            </ul>
+            <div class="tab-content">
+                <div v-for="(ti, idx) in reply_type_list" :class="['tab-pane', ti.active?'active':'']" :reply-type="ti.type">
+                    <template v-if="(ti.type === 'text')">
+                        <edit-item-text :data="ti" :idx="idx" :_msg_data="msg_data" @addMsgs="onAddMsgs"></edit-item-text>
+                    </template>
+                    <template v-if="(ti.type === 'image')">
+                        <edit-item-image :data="ti" :idx="idx" :_msg_data="msg_data" @addMsgs="onAddMsgs"></edit-item-image>
+                    </template>
+                    <template v-if="(ti.type === 'mpnews')">
+                        <edit-item-news :data="ti" :idx="idx" :_msg_data="msg_data" @addMsgs="onAddMsgs"></edit-item-news>
+                    </template>
+                    <template v-if="(ti.type === 'news')">
+                        <edit-item-news-outer :data="ti" :idx="idx" :_msg_data="msg_data" @addMsgs="onAddMsgs" ref="news_outer"></edit-item-news-outer>
+                    </template>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-msg-text">
+    <div class="msg-item-cont" :data-msg-idx="idx">
+        <div style="position: absolute;top:0;right:0;">
+            <button type="button" class="btn btn-default del" @click="removeMsg" data-for="" title="删除"><i class="fa fa-trash-o"></i></button>
+        </div>
+        <textarea cols="50" rows="4" style="border: none;" v-model="data.content"></textarea>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-msg-image">
+    <div class="msg-item-cont" :data-msg-idx="idx">
+        <div style="position: absolute;top:0;right:0;">
+            <button type="button" class="btn btn-default edit" @click="updateMsg" data-for="" title="编辑"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-default del" @click="removeMsg" data-for="" title="删除"><i class="fa fa-trash-o"></i></button>
+        </div>
+        <div class="material-item" style="">
+            <div class="item-pic-cont">
+                <img :src="data.image_url" :data-mid="data.media_id" class="item-pic" onerror="picerr(this,1)">
+                <div class="item-mask" :title="data.name">{{ data.name }}</div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-msg-news">
+    <div class="msg-item-cont" :data-msg-idx="idx">
+        <div style="position: absolute;top:0;right:0;">
+            <button type="button" class="btn btn-default edit" @click="updateMsg" data-for="" title="编辑"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-default del" @click="removeMsg" data-for="" title="删除"><i class="fa fa-trash-o"></i></button>
+        </div>
+        <div class="material-item">
+            <div style="border: 1px solid grey;">
+                <div v-if="firstSubitem" class="" style="width: 250px; height: 100px; position: relative; overflow: hidden;">
+                    <img :src="firstSubitem.image_url" data-mid="" class="item-pic" onerror="picerr(this,1)">
+                    <span class="item-mask">{{ firstSubitem.title }}</span>
+                </div>
+                <div v-if="otherSubitem">
+                    <div v-for="subitem in otherSubitem" style="width: 250px; height: 68px; position: relative; overflow: hidden;">
+                        <div style="width:60px; height: 60px; position: relative; float: right;margin: 4px;overflow: hidden;">
+                            <img :src="subitem.image_url" data-mid="" class="item-pic" onerror="picerr(this,1)">
+                        </div>
+                        <div style="padding-top: 10px; padding-left: 10px; width: 130px;">{{ subitem.title }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-msg-news-outer">
+    <div class="msg-item-cont" :data-msg-idx="idx">
+        <div style="position: absolute;top:0;right:0;">
+            <button type="button" class="btn btn-default edit" @click="updateMsg" data-for="" title="编辑"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-default del" @click="removeMsg" data-for="" title="删除"><i class="fa fa-trash-o"></i></button>
+        </div>
+        <div class="material-item">
+            <div style="border: 1px solid grey;">
+                <div v-if="firstSubitem" class="" style="width: 250px; height: 100px; position: relative; overflow: hidden;">
+                    <img :src="firstSubitem.picurl" data-mid="" class="item-pic" onerror="picerr(this,1)">
+                    <span class="item-mask">{{ firstSubitem.title }}</span>
+                </div>
+                <div v-if="otherSubitem">
+                    <div v-for="subitem in otherSubitem" style="width: 250px; height: 68px; position: relative; overflow: hidden;">
+                        <div style="width:60px; height: 60px; position: relative; float: right;margin: 4px;overflow: hidden;">
+                            <img :src="subitem.picurl" data-mid="" class="item-pic" onerror="picerr(this,1)">
+                        </div>
+                        <div style="padding-top: 10px; padding-left: 10px; width: 130px;">{{ subitem.title }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-edit-text">
+    <div>
+        <div style="margin: 10px;">
+            <textarea v-model="content" cols="50" rows="4" style="border: none;" placeholder="请输入内容"></textarea>
+            <button type="button" @click="okMsg" class="btn btn-primary">添加文本</button>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-edit-image">
+    <div style="position: relative; height: 100px; margin: 10px;">
+        <div @click="chooseImage" style="position: absolute; width: 100px; height: 100px;top: 0;left: 0;margin-left: 50%;transform: translateX(-50%);text-align: center;border: 1px dashed grey;cursor: pointer;">
+            <i class="fa fa-plus" style="height: 90px; width: 100px; font-size: 50px; line-height: 90px;"></i>
+            <div style="font-size: 6px; line-height: 10px;">从素材库选择图片</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-edit-news">
+    <div style="position: relative; height: 100px; margin: 10px;">
+        <div @click="chooseNews" style="position: absolute; width: 100px; height: 100px;top: 0;left: 0;margin-left: 50%;transform: translateX(-50%);text-align: center;border: 1px dashed grey;cursor: pointer;">
+            <i class="fa fa-plus" style="height: 90px; width: 100px; font-size: 50px; line-height: 90px;"></i>
+            <div style="font-size: 6px; line-height: 10px;">从素材库选择图文</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="template-edit-news-outer">
+    <div>
+        <div class="info-list">
+            <h5>{{ articles.length }}篇文章</h5>
+            <div class="box box-info" v-for="(ai, idx) in articles">
+                <div style="position: absolute;top:0;right:0;">
+                    <button type="button" class="btn btn-default del" @click="removeArticle(idx)" data-for="" title="删除"><i class="fa fa-trash-o"></i></button>
+                </div>
+                <div class="box-body">
+                    <p style="margin-bottom: 2px;word-break: break-all;">标题：<input type="text" class="form-control" v-model="ai.title" style="display: inline-block; width: 80%;" /></p>
+                    <p style="margin-bottom: 2px;word-break: break-all;">描述：<input type="text" class="form-control" v-model="ai.description" style="display: inline-block; width: 80%;" /></p>
+                    <p style="margin-bottom: 2px;word-break: break-all;">链接：<input type="text" class="form-control" v-model="ai.url" style="display: inline-block; width: 80%;" /></p>
+                    <p style="margin-bottom: 2px;word-break: break-all;">图片：<input type="text" class="form-control" v-model="ai.picurl" style="display: inline-block; width: 80%;" /><button type="button" @click="updateImage(idx)"><i class="fa fa-edit"></i></button></p>
+                    <p style="margin-bottom: 2px;word-break: break-all;"><img class="preview" :src="ai.picurl" style="height: 100px; width: 100px;" alt="暂无图片" onerror="picerr(this, 1)"></p>
+                </div>
+            </div>
+        </div>
+        <div class="op">
+            <div class="">
+                <div class="box-body">
+                    <div class="form">
+                        <div class="form-group">
+                            <label for="add-news-title">标题</label>
+                            <input type="text" class="form-control" v-model="editArticle.title">
+                        </div>
+                        <div class="form-group">
+                            <label for="add-news-desc">描述</label>
+                            <input type="text" class="form-control" v-model="editArticle.description">
+                        </div>
+                        <div class="form-group">
+                            <label for="add-news-url">链接</label>
+                            <input type="text" class="form-control" v-model="editArticle.url">
+                        </div>
+                        <div class="form-group">
+                            <label for="add-news-picurl">图片</label>
+                            <div>
+                                <input type="text" class="form-control" v-model="editArticle.picurl">
+                                <img class="preview" :src="editArticle.picurl" style="height: 100px; width: 100px;" alt="暂无图片" onerror="picerr(this, 1)">
+                                <input class="realval" type="hidden" v-model="editArticle.picurl">
+                                <a class="btn btn-app" file-field=".realval" file-preview="img.preview" @click="selectImage">
+                                    <i class="fa fa-edit"></i> 上传图片
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <input class="" type="hidden" id="msg-id">
+                    <button type="button" class="btn" @click="addArticle">添加文章</button>
+                    <button v-if="pMsg" type="button" class="btn btn-primary" @click="okfn">保存修改</button>
+                    <button v-else type="button" class="btn btn-primary" @click="okfn">保存图文</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</script>
