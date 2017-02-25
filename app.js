@@ -67,7 +67,7 @@ app.set('view engine', 'dust');
 app.use(Filter(['checklogin'], {
     exclude: ['/wxhandler', '/wxapi'],
     tokendir: ['/upload'],
-    required: true
+    required: false
 }),enrouten({
     directory: 'controllers'
 }));
