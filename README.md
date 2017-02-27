@@ -17,4 +17,4 @@
 
 ## 界面截图
 
-![gopub](https://www.anchel.cn/images/tmp/wx-jietu.png)
+![截图](https://www.anchel.cn/images/tmp/wx-jietu.png)
