@@ -14,3 +14,7 @@
 + 将自己的公众号相关的appid，appsecret，token等信息在 config/development.js 里面修改好
 + 然后执行 node app.js 就启动系统了
 + 访问 http://IP ，这里的ip是你web服务器的ip。如果要更换端口，修改 config/development.js 里面的80端口号。另外1024以下端口号需要root权限才能正常启动监听。
+
+## 界面截图
+
+![gopub](https://www.anchel.cn/images/tmp/wx-jietu.png)
