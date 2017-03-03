@@ -52,6 +52,8 @@ module.exports = function (router) {
         var id = req.body.id;
         if(id != undefined && id !== '' && !isNaN(id)){
             id = parseInt(id, 10);
+        } else {
+            id = undefined
         }
         var type            = req.body.type;
         var title           = req.body.title;
