@@ -17,4 +17,4 @@
 
 ## 界面截图
 
-![截图](https://www.anchel.cn/images/tmp/wx-jietu.png)
+![截图](https://github.com/anchel/weixin-admin/blob/master/public/static/style/img/wx-jietu.png)
