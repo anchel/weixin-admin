@@ -50,7 +50,7 @@ module.exports = {
     imageFtpConfig: {
         host: '115.29.190.31',
         username: 'web',
-        password: 'web666',
+        password: '',
         basedir: '/data/image/upload/wechat',
         httpprefix: 'http://115.29.190.31/image/upload/wechat'
     },
