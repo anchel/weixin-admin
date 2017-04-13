@@ -309,7 +309,7 @@ $(function(){
         }
     }
 
-    initUserInfo();
+    // initUserInfo();
 
     $('.logout').click(function() {
         var url = 'http://' + g_base.loginbase + '/api/logout';
