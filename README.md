@@ -18,3 +18,5 @@
 ## 界面截图
 
 ![截图](https://github.com/anchel/weixin-admin/blob/master/public/static/style/img/wx-jietu.png)
+
+有问题可联系邮箱：anchel.xy@163.com
