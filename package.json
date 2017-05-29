@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.teshehui.com:h5/weixin-admin.git"
+    "url": "git@gitlab.anchel.com:h5/weixin-admin.git"
   },
   "keywords": [
     "weixin",
     "admin"
   ],
-  "author": "Teshehui FE Team",
+  "author": "anchel FE Team",
   "license": "ISC",
   "dependencies": {
     "adaro": "^1.0.4",

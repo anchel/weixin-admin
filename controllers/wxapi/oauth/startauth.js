@@ -39,7 +39,7 @@ module.exports = function (router) {
 
         var rurl_callback = OAUTH_CALLBACK + '?' + qs.stringify({rurl: rurl, forlogin: forlogin, scope: scope, pay_redirect: pay_redirect});
         // if (pay_redirect === '1') {
-        //     rurl_callback = 'http://pay-app.teshehui.com/wxOAuth/wxUserAuthCallback.action?' + qs.stringify({
+        //     rurl_callback = 'http://pay-app.anchel.com/wxOAuth/wxUserAuthCallback.action?' + qs.stringify({
         //             returnUrl: rurl
         //         });
         // }

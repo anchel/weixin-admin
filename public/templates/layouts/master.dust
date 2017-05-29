@@ -40,7 +40,7 @@
     {+styleTop/}
     <script>
         try{
-            document.domain = 'teshehui.com';
+            document.domain = 'anchel.com';
         }catch(e){
 
         }

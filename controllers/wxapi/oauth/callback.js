@@ -8,7 +8,10 @@ var requestLibrary = require('../../../lib/requestLibrary');
 var wechatApi = require('../../../lib/wechat/wechat-api');
 var wechatUtil = require('../../../lib/wechat/wechat_util');
 var wechatService = require('../../../services/wechatService');
-var portalService = require('../../../services/portalService');
+var portalService = {
+    wechatLogin: function () {},
+
+};
 var tbl_state_url_map = require('../../../models/state_url_map');
 var ResponseError = require('../../../errors/ResponseError');
 var Logger = require('../../../lib/logger');
@@ -48,7 +51,7 @@ module.exports = function (router) {
         //         code: code,
         //         state: state
         //     });
-        //     var oldbackurl = 'http://pay-app.teshehui.com/wxOAuth/wxUserAuthCallback.action?' + params;
+        //     var oldbackurl = 'http://pay-app.anchel.com/wxOAuth/wxUserAuthCallback.action?' + params;
         //     res.redirect(oldbackurl);
         //     return;
         // }
@@ -79,8 +82,8 @@ module.exports = function (router) {
                                 city: oauthuserinfo.city,
                                 language: 'zh_CN'
                             });
-                            res.cookie('userid', retobj.userId, {domain: '.teshehui.com'});
-                            res.cookie('skey', retobj.token, {domain: '.teshehui.com'});
+                            res.cookie('userid', retobj.userId, {domain: '.anchel.com'});
+                            res.cookie('skey', retobj.token, {domain: '.anchel.com'});
                             res.redirect(toUrl);
                         } else {
                             if(retobj && retobj.status === 500 && retobj.code === '100'){  //跳转到绑定手机号

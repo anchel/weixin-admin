@@ -20,7 +20,7 @@ module.exports = {
          title: '你来我家接我吧',
          description: '这是女神与高富帅之间的对话',
          picurl: 'http://img0.bdstatic.com/img/image/zhengjiuwxr.jpg',
-         url: 'http://m.teshehui.com/'
+         url: 'http://m.anchel.com/'
      }
      ]);
      */

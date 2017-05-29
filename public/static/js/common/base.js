@@ -267,7 +267,7 @@ Emitter.prototype.hasListeners = function(event) {
 })();
 
 function picerr(pic, type){
-    pic.src = 'http://image.teshehui.com/mui/style/common/img/placeholder/120.png';
+    pic.src = 'http://image.anchel.com/mui/style/common/img/placeholder/120.png';
 }
 
 function notifiy(msg, type){

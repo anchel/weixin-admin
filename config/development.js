@@ -10,26 +10,26 @@ module.exports = {
 
     siteConfig: {
         name: '微信管理系统-开发环境',
-        host: 'http://wxadmin.teshehui.com'
+        host: 'http://wechat.anchel.cn/'
     },
 
     loginConfig: {
-        host: 'oalogin.teshehui.com',
+        host: 'oalogin.anchel.com',
         port: 80
     },
 
     permConfig: {
         protocol: 'http',
-        host: 'perm.teshehui.com',
+        host: 'perm.anchel.com',
         port: 80,
         bid: 100,
         open: false
     },
 
     hostConfig: {
-        cmsweb: 'http://cms-web.teshehui.com',
-        portalapi: 'http://portal-api.teshehui.com',
-        wxapi: 'http://wxapi-test.teshehui.com'
+        cmsweb: 'http://cms-web.anchel.com',
+        portalapi: 'http://portal-api.anchel.com',
+        wxapi: 'http://wxapi-test.anchel.com'
     },
 
     wechatConfig: {

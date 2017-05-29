@@ -7,14 +7,14 @@
 <body>
     <h1>测试jssdk</h1>
 
-    <script src="http://wxapi.teshehui.com/js/lib/jquery-2.2.3.min.js"></script>
+    <script src="http://wxapi.anchel.com/js/lib/jquery-2.2.3.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
     <script>
 
         function jssdk_init () {
             $.ajax({
-                url: 'http://wxapi.teshehui.com/wxapi/jssdk/getjsconf',
+                url: 'http://wxapi.anchel.com/wxapi/jssdk/getjsconf',
                 dataType: 'jsonp',
                 data: {
                     url: location.href,
@@ -38,7 +38,7 @@
             wx.onMenuShareTimeline({
                 title: '这是分享到朋友圈的标题', // 分享标题
                 link: 'http://www.baidu.com/', // 分享链接
-                imgUrl: 'http://imagecache.teshehui.com/cms/2016001/74/BD2016L7245231374/cms147632187080484.jpg@1e_1c_0o_0l_540w_640h_60Q.jpg', // 分享图标
+                imgUrl: 'http://imagecache.anchel.com/cms/2016001/74/BD2016L7245231374/cms147632187080484.jpg@1e_1c_0o_0l_540w_640h_60Q.jpg', // 分享图标
                 success: function () {
                     // 用户确认分享后执行的回调函数
                 },
@@ -50,7 +50,7 @@
                 title: '这是分享给朋友的标题', // 分享标题
                 desc: '这是分享给朋友的描述', // 分享描述
                 link: 'http://www.qq.com/', // 分享链接
-                imgUrl: 'http://imagecache.teshehui.com/cms/2016001/51/160928102651/cms147609780409138.jpg@1e_1c_0o_0l_1080w_540h_60Q.jpg', // 分享图标
+                imgUrl: 'http://imagecache.anchel.com/cms/2016001/51/160928102651/cms147609780409138.jpg@1e_1c_0o_0l_1080w_540h_60Q.jpg', // 分享图标
                 type: '', // 分享类型,music、video或link，不填默认为link
                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                 success: function () {
