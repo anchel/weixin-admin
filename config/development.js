@@ -9,27 +9,7 @@ module.exports = {
     },
 
     siteConfig: {
-        name: '微信管理系统-开发环境',
-        host: 'http://wechat.anchel.cn/'
-    },
-
-    loginConfig: {
-        host: 'oalogin.anchel.com',
-        port: 80
-    },
-
-    permConfig: {
-        protocol: 'http',
-        host: 'perm.anchel.com',
-        port: 80,
-        bid: 100,
-        open: false
-    },
-
-    hostConfig: {
-        cmsweb: 'http://cms-web.anchel.com',
-        portalapi: 'http://portal-api.anchel.com',
-        wxapi: 'http://wxapi-test.anchel.com'
+        name: '微信管理系统-开发环境'
     },
 
     wechatConfig: {
@@ -63,9 +43,16 @@ module.exports = {
         }
     },
 
-    securityConfig: {
-        s_token: '4d23bd16e32666c470074456898cbe30ce2e2f01aeb9c57ef116633eaa9288d9',
-        signApiKey: '40287ae447680a6b0147680a6b580000'
+    hostConfig: {
+        wxapi: 'http://wechat.anchel.cn'
+    },
+
+    permConfig: {
+        protocol: 'http',
+        host: 'perm.anchel.cn',
+        port: 80,
+        bid: 100,
+        open: false
     },
 
     logConfig: {

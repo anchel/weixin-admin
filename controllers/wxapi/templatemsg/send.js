@@ -17,13 +17,10 @@ var t_template_list = require('../../../models/template_list');
 var log = Logger.getLogger();
 
 module.exports = function (router) {
-    
-    var fns = Filter(['checksign']);
-
     /**
      * 发送模板消息
      */
-    router.get('/', fns, function(req, res){
+    router.get('/', function(req, res){
         var platform = 'MALL';
         var type = req.query.type;
         if (!type) {

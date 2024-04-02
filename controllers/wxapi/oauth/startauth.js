@@ -31,7 +31,7 @@ module.exports = function (router) {
         var forlogin = req.query.forlogin;
         var pay_redirect = req.query.pay_redirect;
 
-        var errmsg = wechatUtil.checkTeshehuiUrl(rurl);
+        var errmsg = wechatUtil.checkValidUrl(rurl);
         if (errmsg) {
             res.send(errmsg);
             return false;

@@ -3,7 +3,6 @@ var _ = require('lodash');
 var urllib = require('url');
 var utilLibrary = require('../lib/utilLibrary');
 var requestLibrary = require('../lib/requestLibrary');
-var cmsBaseUrl = config.get('hostConfig.cmsweb');
 var Logger = require('../lib/logger');
 var ResponseError = require('../errors/ResponseError');
 
@@ -12,8 +11,8 @@ var log = Logger.getLogger();
 var userService = {
 
     checkLogin: function(req, res, cb){
-        var loginhost = config.get('loginConfig.host');
-        var loginport = config.get('loginConfig.port');
+        var loginhost = 'login.anchel.cn';
+        var loginport = 80;
         var path = '/api/checklogin';
         var url = urllib.format({
             protocol: 'http',
@@ -42,8 +41,8 @@ var userService = {
     },
 
     getUserInfo: function(req, res, cb){
-        var loginhost = config.get('loginConfig.host');
-        var loginport = config.get('loginConfig.port');
+        var loginhost = 'login.anchel.cn';
+        var loginport = 80;
         var path = '/api/userinfo/' + req.cookies.oa_user_id;
         var url = urllib.format({
             protocol: 'http',
@@ -100,7 +99,6 @@ var userService = {
                 cookie: cookieStr
             },
             qs: params,
-            //proxy: 'http://127.0.0.1:8888',
             json: true,
             timeout: 5000
         }, function(err, body, res){

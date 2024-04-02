@@ -1,20 +1,18 @@
 
 'use strict';
 
-var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var enrouten = require('express-enrouten');
-var RedisStore = require('connect-redis')(session);
+
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
 
 var config = require('config');
 var Logger = require('./lib/logger');
 var Filter = require('./lib/filter');
-var utilLibrary = require('./lib/utilLibrary');
+
 var tagLibrary = require('./lib/tagLibrary');
 var logger = Logger.getLogger('index');
 
@@ -31,31 +29,13 @@ app.use(bodyParser.json());
 /**
  * 模板渲染的时候，全局的模型对象
  */
-var loginbase = config.get('loginConfig.host');
-if(config.get('loginConfig.port') != 80){
-    loginbase = loginbase + ':' + config.get('loginConfig.port');
-}
 app.locals.g_base = {
-    sitename: config.get('siteConfig.name'),
-    sitebase: config.get('siteConfig.host'),
-    apibase: config.get('hostConfig'),
-    loginbase: loginbase
+    sitename: config.get('siteConfig.name')
 };
 app.locals.g_webui = config.get('webui');
 
 app.locals.tagjs = tagLibrary.tagJs;
 app.locals.tagcss = tagLibrary.tagCss;
-
-// app.use(session({
-//     name: 'nodesess',
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         httpOnly: false
-//     },
-//     store: new RedisStore(config.get('sessionConfig.redis'))
-// }));
 
 var viewCache = process.env.NODE_ENV == 'production' ? true : config.get('cacheConfig.viewCache');
 var adaro = require('adaro');
