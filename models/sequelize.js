@@ -1,5 +1,5 @@
 var config = require('config');
-var Sequelize = require('sequelize');
+const { Sequelize, Model, DataTypes } = require('sequelize');
 
 var opts = {
     host: config.get('mysqlConfig.host'),
