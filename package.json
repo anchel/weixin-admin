@@ -37,7 +37,7 @@
     "request": "^2.72.0",
     "sequelize": "^6.37.2",
     "thrift": "^0.20.0",
-    "wechat": "^0.3.2",
+    "wechat": "^2.1.0",
     "wechat-api": "^1.28.1"
   }
 }
