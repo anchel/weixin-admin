@@ -267,7 +267,7 @@ Emitter.prototype.hasListeners = function(event) {
 })();
 
 function picerr(pic, type){
-    pic.src = 'http://image.anchel.com/mui/style/common/img/placeholder/120.png';
+    pic.src = 'https://www.anchel.cn/images/wechat/placeholder.png';
 }
 
 function notifiy(msg, type){
