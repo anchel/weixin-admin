@@ -37,7 +37,7 @@ app.locals.g_webui = config.get('webui');
 app.locals.tagjs = tagLibrary.tagJs;
 app.locals.tagcss = tagLibrary.tagCss;
 
-var viewCache = process.env.NODE_ENV == 'production' ? true : config.get('cacheConfig.viewCache');
+var viewCache = process.env.NODE_ENV == 'production' ? true : false;
 var adaro = require('adaro');
 app.engine('dust', adaro.dust({ cache: viewCache, whitespace: true , helpers: ['dustjs-helpers']}));
 app.set('views', './public/templates');
