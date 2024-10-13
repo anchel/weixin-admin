@@ -10,9 +10,9 @@ module.exports = {
 
   wechatConfig: {
     appid: "wx03dd82dd396494c2",
-    appsecret: "d2c078095faf997494785d3ce4c9c6e0",
-    token: "webqdnxs666",
-    encodingAESKey: "YCWJGTpDK3vK9VwC1LZL8S9F9fovpkwuvj1vus7FvEa",
+    appsecret: "333",
+    token: "11",
+    encodingAESKey: "222",
   },
 
   mysqlConfig: {
