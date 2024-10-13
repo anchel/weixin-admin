@@ -1,11 +1,12 @@
 # weixin-admin
-管理微信公众号，实现了自动回复，自定义菜单，渠道二维码创建等功能
 
+管理微信公众号，实现了自动回复，自定义菜单，渠道二维码创建等功能
 
 体验地址：http://wechat.anchel.cn/
 
 部署步骤
-+ 准备自己的web服务器，安装好nginx（可选），node，mysql，pm2（可选）
+
++ 准备自己的web服务器，并安装好 nodejs。准备好数据库 mysql
 + 将项目代码下载到自己的web服务器上，比如这个目录 /data/web/weixin-admin
 + 将项目下 docs/db/wechat.sql 建库表语句执行，然后将 config/development.js 里面的mysql相关配置修改成自己的
 + 在项目主目录下执行：npm install
