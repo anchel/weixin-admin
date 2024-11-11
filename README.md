@@ -1,4 +1,6 @@
-# weixin-admin
+# 此项目已不再维护，用golang+vue3全新重构了，详情请见 https://github.com/anchel/wechat-official-account-admin
+
+## weixin-admin
 
 管理微信公众号，实现了自动回复，自定义菜单，渠道二维码创建等功能
 
